@@ -48,10 +48,10 @@ export default function AboutSection() {
               From Soil <br/> to Sip.
             </h3>
             <p className="text-xl font-light text-white/80 leading-relaxed max-w-lg mb-8">
-              We believe that great coffee isn't just made; it's grown. Our partnership with farmers ensures that every cherry is picked at peak ripeness, resulting in a cup that is vibrant, complex, and undeniably fresh.
+              We believe that great coffee isn&apos;t just made; it&apos;s grown. Our partnership with farmers ensures that every cherry is picked at peak ripeness, resulting in a cup that is vibrant, complex, and undeniably fresh.
             </p>
             <p className="text-lg text-white/60 mb-8 border-b border-white/20 pb-8">
-              "Coffee is more than a drink. It's a ritual, a craft, and a connection to the earth."
+              &quot;Coffee is more than a drink. It&apos;s a ritual, a craft, and a connection to the earth.&quot;
             </p>
             <a href="#shop" className="inline-block text-white font-bold tracking-widest uppercase border-b-2 border-white hover:text-white/80 transition-colors">
               Read Our Full Story
