@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 
-const TEXT = "FRESHLY ROASTED IN HALDWANI • SINGLE ORIGIN SOURCING • SUSTAINABLE FARMING • ";
+const TEXT = "FRESHLY ROASTED IN BROOKLYN • SINGLE ORIGIN SOURCING • SUSTAINABLE FARMING • ";
 
 export default function Marquee() {
   return (

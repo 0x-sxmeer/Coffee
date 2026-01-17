@@ -23,10 +23,9 @@ export default function Footer() {
           <div>
             <h4 className="font-bold tracking-widest mb-6">VISIT</h4>
             <ul className="space-y-4 text-white/70">
-              <li>Haldwani, Uttarakhand</li>
-              <li>India</li>
-              <li className="pt-4">20sameer90@gmail.com</li>
-              <li>+91 7017897102</li>
+              <li>123 Berry St</li>
+              <li>Brooklyn, NY 11249</li>
+              <li className="pt-4">hello@homie.coffee</li>
             </ul>
           </div>
         </div>
