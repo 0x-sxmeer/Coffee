@@ -3,6 +3,8 @@ import { Inter, Playfair_Display } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "@/components/SmoothScrolling";
 import NoiseOverlay from "@/components/NoiseOverlay";
+import { CartProvider } from "@/context/CartContext";
+import CartDrawer from "@/components/CartDrawer";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair" });
@@ -20,10 +22,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.variable} ${playfair.variable} bg-homie-green text-white/90 antialiased`}>
-        <SmoothScrolling>
-          <NoiseOverlay />
-          {children}
-        </SmoothScrolling>
+        <CartProvider>
+          <CartDrawer />
+          <SmoothScrolling>
+            <NoiseOverlay />
+            {children}
+          </SmoothScrolling>
+        </CartProvider>
       </body>
     </html>
   );

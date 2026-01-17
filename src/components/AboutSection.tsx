@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 const STATS = [
   { label: "Altitude", value: "1,800m" },
   { label: "Process", value: "Washed" },
-  { label: "Region", value: "Yirgacheffe" },
+  { label: "Region", value: "Rudrapur" },
 ];
 
 export default function AboutSection() {

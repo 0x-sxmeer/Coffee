@@ -1,46 +1,63 @@
 "use client";
 
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useState, useEffect } from "react";
+import { motion, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
+import { useCart } from "@/context/CartContext";
+
+const LINKS = [
+  { name: "Story", href: "#story" },
+  { name: "Shop", href: "#shop" },
+  { name: "Subscription", href: "#" },
+  { name: "Locations", href: "#" },
+];
 
 export default function Navbar() {
   const { scrollY } = useScroll();
   const [isScrolled, setIsScrolled] = useState(false);
+  const { cartCount, toggleCart } = useCart();
 
-  useEffect(() => {
-    return scrollY.onChange((latest) => {
-      setIsScrolled(latest > 50);
-    });
-  }, [scrollY]);
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+  });
 
   return (
     <motion.nav
-      className={`fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4 transition-all duration-300 ${
-        isScrolled ? "bg-homie-green/80 backdrop-blur-md shadow-lg" : "bg-transparent"
-      }`}
       initial={{ y: -100 }}
       animate={{ y: 0 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
+      transition={{ duration: 0.8 }}
+      className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 border-b border-transparent ${
+        isScrolled
+          ? "bg-homie-green/80 backdrop-blur-md shadow-lg py-4 border-white/5"
+          : "bg-transparent py-8"
+      }`}
     >
-      <div className="flex items-center gap-2">
-        <span className="font-serif text-2xl font-bold text-white tracking-tighter">HOMIE.</span>
-      </div>
+      <div className="mx-auto flex max-w-7xl items-center justify-between px-6">
+        {/* Logo */}
+        <a href="#" className="text-2xl font-black tracking-tighter text-white">
+          HOMIE.
+        </a>
 
-      <div className="hidden md:flex items-center gap-8">
-        {["Story", "Shop", "Subscription", "Locations"].map((item) => (
-          <a
-            key={item}
-            href={`#${item.toLowerCase()}`}
-            className="text-sm font-medium text-white/80 hover:text-white transition-colors uppercase tracking-widest"
-          >
-            {item}
-          </a>
-        ))}
-      </div>
+        {/* Links (Desktop) */}
+        <div className="hidden space-x-8 md:flex">
+          {LINKS.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-sm font-bold uppercase tracking-widest text-white/80 transition-colors hover:text-white"
+            >
+              {link.name}
+            </a>
+          ))}
+        </div>
 
-      <button className="rounded-full border border-white/20 bg-white/10 px-6 py-2 text-sm font-bold text-white backdrop-blur-sm transition-all hover:bg-white hover:text-homie-green">
-        MY CART (0)
-      </button>
+        {/* Cart Action */}
+        <button 
+          onClick={toggleCart}
+          className="relative rounded-full border border-white/20 px-6 py-2 text-xs font-bold uppercase tracking-widest text-white transition-all hover:bg-white hover:text-homie-green"
+        >
+          My Cart {cartCount > 0 && `(${cartCount})`}
+        </button>
+      </div>
     </motion.nav>
   );
 }

@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useCart } from "@/context/CartContext";
 
 const PRODUCTS = [
   {
@@ -27,6 +28,8 @@ const PRODUCTS = [
 ];
 
 export default function ProductGrid() {
+  const { addToCart } = useCart();
+
   return (
     <section className="bg-white py-32 px-6">
       <div className="mx-auto max-w-7xl">
@@ -66,9 +69,15 @@ export default function ProductGrid() {
                 />
 
                 {/* "Quick Add" Circle Overlay */}
-                <div className="absolute bottom-6 right-6 h-12 w-12 rounded-full bg-homie-green text-white flex items-center justify-center opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 shadow-lg z-20">
-                  <span className="text-xl">+</span>
-                </div>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    addToCart(product);
+                  }}
+                  className="absolute bottom-6 right-6 h-12 w-12 rounded-full bg-homie-green text-white flex items-center justify-center opacity-0 translate-y-4 transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 shadow-lg z-20 hover:scale-110 hover:bg-homie-green/90"
+                >
+                  <span className="text-xl font-bold">+</span>
+                </button>
               </div>
               
               <div className="mt-6 flex justify-between items-start px-2">
